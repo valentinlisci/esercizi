@@ -1,3 +1,5 @@
+#ESERCIZI EXTRA
+
 TOUCH
  Illustrare almeno 2 casi in cui il comando touch può generare una condizione di errore.
 
