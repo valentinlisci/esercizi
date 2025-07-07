@@ -1,0 +1,41 @@
+#Step 8 - Scrip
+#Creare un repo GitHub con i seguenti script versioni in appositi repo GIT.
+#Per ogni script creare un file con spiegazione del codice (aiutarsi con Google e con il man)
+# -----------------------------------------------------------------------------------------------------------
+
+#!/bin/bash
+# am-i-root.sh:   Am I root or not?
+ 
+ROOT_UID=0   # Root has $UID 0.                                               
+ #questa variabile contiene l'UID di root, che è 0. Tutti gli altri utenti hanno un UID diverso da 0.
+
+
+if [ "$UID" -eq "$ROOT_UID" ]  # Will the real "root" please stand up?     
+then                                                                           
+  echo "You are root."
+else
+  echo "You are just an ordinary user (but mom loves you just the same)."
+fi
+ 
+exit 0
+ 
+#questo ciclo if controlla se l'UID dell'utente corrente è uguale a 0 (l'UID di root). Se sì, stampa "You are root." altrimenti stampa "You are just an ordinary user (but mom loves you just the same)."
+
+
+
+# ============================================================= #
+# Code below will not execute, because the script already exited.
+ 
+# An alternate method of getting to the root of matters:
+ 
+ROOTUSER_NAME=root
+#questa variabile contiene il nome utente di root, che è "root".
+ 
+username=`id -nu`              # Or...   username=`whoami`
+if [ "$username" = "$ROOTUSER_NAME" ]
+then
+  echo "Rooty, toot, toot. You are root."
+else
+  echo "You are just a regular fella."
+fi
+#questo ciclo if controlla se il nome utente dell'utente corrente è uguale a "root". Se sì, stampa "Rooty, toot, toot. You are root." altrimenti stampa "You are just a regular fella."

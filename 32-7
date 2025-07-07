@@ -1,0 +1,47 @@
+#Step 8 - Script
+#Creare un repo GitHub con i seguenti script versioni in appositi repo GIT.
+#Per ogni script creare un file con spiegazione del codice (aiutarsi con Google e con il man)
+#---------------------------------------------------------------------------------------------------------------------------
+
+#! /bin/bash
+# progress-bar2.sh
+# Author: Graham Ewart (with reformatting by ABS Guide author).
+# Used in ABS Guide with permission (thanks!).
+ 
+# Invoke this script with bash. It doesn't work with sh.
+ 
+interval=1
+long_interval=10
+#significa che l'intervallo di tempo tra i punti della barra di avanzamento è di 1 secondo e il tempo totale del processo lungo è di 10 secondi
+ 
+{
+     trap "exit" SIGUSR1
+     sleep $interval; sleep $interval
+     while true
+     do
+       echo -n '.'     # Use dots.
+       sleep $interval
+     done; } &         # Start a progress bar as a background process.
+# questo ciclo stampa un punto ogni secondo fino a quando non viene ricevuto un segnale SIGUSR1
+
+pid=$!
+trap "echo !; kill -USR1 $pid; wait $pid"  EXIT        # To handle ^C.
+# Questo comando imposta un gestore per il segnale EXIT che stampa il PID del processo in background, invia un segnale SIGUSR1 a quel processo e attende la sua terminazione
+
+
+echo -n 'Long-running process '
+#stampa "long-running process" 
+sleep $long_interval
+#simula un processo lungo che dura 10 secondi
+echo ' Finished!'
+# stampa "Finished!" 
+ 
+kill -USR1 $pid
+#interrompe il processo
+wait $pid              # Stop the progress bar.
+#attende la terminazione del processo 
+trap EXIT
+#ripristina il gestore del segnale EXIT originale
+ 
+exit $?
+#termina lo script con il codice di uscita dell'ultimo comando eseguito

@@ -1,0 +1,14 @@
+#Step 8 - Scrip
+#Creare un repo GitHub con i seguenti script versioni in appositi repo GIT.
+#Per ogni script creare un file con spiegazione del codice (aiutarsi con Google e con il man)
+
+#Example 2-1. cleanup: A script to clean up log files in /var/log
+# Cleanup
+# Run as root, of course.
+cd /var/log #spostamento nella cartella /var/log
+cat /dev/null > messages # sovrascrive il file messages con il contenuto di /dev/null che è vuoto
+cat /dev/null > wtmp # sovrascrive il file wtmp con il contenuto di /dev/null quindi lo svuota
+echo "Log files cleaned up. 
+
+#dovrebbe stampare a video il messaggio Log files cleaned up." ma non lo faperche manca " a fine riga
+

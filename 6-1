@@ -1,0 +1,30 @@
+#Step 8 - Script
+#Creare un repo GitHub con i seguenti script versioni in appositi repo GIT.
+#Per ogni script creare un file con spiegazione del codice (aiutarsi con Google e con il man)
+#---------------------------------------------------------------------------------------------------------------------------
+
+#!/bin/bash
+ 
+echo hello
+# stampa "hello" a video
+
+echo $?    # Exit status 0 returned because command executed successfully.
+# stampa il valore di ritorno dell'ultimo comando eseguito, che in questo caso è 0, indicando che il comando è stato eseguito con successo
+
+lskdf      # Unrecognized command.
+#cerca di eseguire un comando errato
+
+echo $?    # Non-zero exit status returned -- command failed to execute.
+# stampa il valore di ritorno dell'ultimo comando eseguito, che in questo caso è un numero diverso da 0, indicando che il comando non è stato eseguito correttamente
+
+echo
+# stampa una riga vuota
+
+exit 113   # Will return 113 to shell.
+           # To verify this, type "echo $?" after script terminates.
+#termina lo script con codice 113, che indica un errore specifico.
+
+
+#  By convention, an 'exit 0' indicates success,
+#+ while a non-zero exit value means an error or anomalous condition.
+#  See the "Exit Codes With Special Meanings" appendix.

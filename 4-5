@@ -1,0 +1,75 @@
+#Step 8 - Scrip
+#Creare un repo GitHub con i seguenti script versioni in appositi repo GIT.
+#Per ogni script creare un file con spiegazione del codice (aiutarsi con Google e con il man)
+# -----------------------------------------------------------------------------------------------------------
+
+#!/bin/bash
+ 
+# Call this script with at least 10 parameters, for example
+# ./scriptname 1 2 3 4 5 6 7 8 9 10
+MINPARAMS=10
+#questa è una variabile che contiene il numero minimo di parametri richiesti per eseguire lo script
+ 
+echo 
+#vuole stampare una riga vuota
+ 
+echo "The name of this script is \"$0\"."
+# Adds ./ for current directory
+#stampa il nome dello script con il percorso completo.
+
+echo "The name of this script is \"`basename $0`\"."
+# Strips out path name info (see 'basename')
+#stampa solo il nome dello script senza il percorso.
+
+
+echo
+#vuole stampare una riga vuota
+
+if [ -n "$1" ]              # Tested variable is quoted.
+then
+ echo "Parameter #1 is $1"  # Need quotes to escape #
+fi
+ #questa condizione controlla se il primo parametro è stato passato allo script. Se sì, stampa "Parameter #1 is" seguito dal valore del primo parametro.
+
+
+if [ -n "$2" ]
+then
+ echo "Parameter #2 is $2"
+fi
+ #questa condizione controlla se il secondo parametro è stato passato allo script. Se sì, stampa "Parameter #2 is" seguito dal valore del secondo parametro.
+
+
+if [ -n "$3" ]
+then
+ echo "Parameter #3 is $3"
+fi
+ #questa condizione controlla se il terzo parametro è stato passato allo script. Se sì, stampa "Parameter #3 is" seguito dal valore del terzo parametro.
+
+
+# ...
+ 
+ 
+if [ -n "${10}" ]  # Parameters > $9 must be enclosed in {brackets}.
+then
+ echo "Parameter #10 is ${10}"
+fi
+ #questa condizione controlla se il decimo parametro è stato passato allo script. Se sì, stampa "Parameter #10 is" seguito dal valore del decimo parametro.
+
+
+echo "-----------------------------------" #stampa
+echo "All the command-line parameters are: "$*""
+#stampa tutti i parametri passati allo script come una singola stringa, separati da spazi. Il simbolo $* rappresenta tutti i parametri passati allo script.
+ 
+if [ $# -lt "$MINPARAMS" ]
+then
+  echo
+  echo "This script needs at least $MINPARAMS command-line arguments!"
+fi 
+ #questa condizione controlla se il numero di parametri passati allo script è inferiore al numero minimo richiesto (10). Se sì, stampa un messaggio di errore che indica che lo script richiede almeno 10 argomenti da riga di comando.
+
+
+echo
+#stampa una riga vuota
+ 
+exit 0
+#termina lo script indicando che è stato eseguito senza problemi
